@@ -43,7 +43,7 @@ export default function Home() {
       {/* Image */}
       <div className="mb-4" data-aos="zoom-in">
         <img
-          src="/images/text-to-speech.png"
+          src="public/images/text-to-speech.png"
           alt="Voice AI"
           className="img-fluid rounded shadow"
           style={{ maxHeight: "280px" }}
