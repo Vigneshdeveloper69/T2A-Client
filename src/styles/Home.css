@@ -1,0 +1,27 @@
+.animated-button {
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+.animated-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 123, 255, 0.4);
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.home-wrapper {
+  font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    text-align: center;
+  }
+}

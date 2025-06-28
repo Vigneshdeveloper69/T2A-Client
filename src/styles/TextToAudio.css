@@ -1,0 +1,62 @@
+.tta-wrapper {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  resize: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+}
+
+.form-control, .form-select {
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.3);
+  border-color: #0d6efd;
+}
+
+.btn-primary {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  transform: scale(1.05);
+}
+
+audio {
+  width: 100%;
+  outline: none;
+  margin-top: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 576px) {
+  .tta-wrapper {
+    padding: 10px;
+    margin: 20px 10px;
+  }
+
+  textarea {
+    font-size: 1rem;
+  }
+}

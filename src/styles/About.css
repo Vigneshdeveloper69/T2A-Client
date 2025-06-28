@@ -1,0 +1,13 @@
+.about-wrapper {
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 60px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease-in-out;
+}
+
+img.rounded-circle {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
