@@ -7,12 +7,17 @@ export default function TextToAudio() {
   const [language, setLanguage] = useState("en");
   const [audioUrl, setAudioUrl] = useState(null);
 
+  const BASE_URL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:8000"
+      : "https://t2a-server.onrender.com";
+
   const handleTextUpload = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await axios.post("https://t2a-server.onrender.com/api/upload", formData);
+      const res = await axios.post(`${BASE_URL}/api/upload`, formData);
       setText(res.data.text);
     } catch (err) {
       console.error("Upload error:", err);
@@ -24,7 +29,7 @@ export default function TextToAudio() {
     formData.append("text", text);
     formData.append("lang", language);
     try {
-      const res = await axios.post("https://t2a-server.onrender.com/api/tts", formData);
+      const res = await axios.post(`${BASE_URL}/api/tts`, formData);
       setAudioUrl(res.data.audio_url);
     } catch (err) {
       console.error("Conversion error:", err);
@@ -37,10 +42,10 @@ export default function TextToAudio() {
       const blob = new Blob([response.data]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
+      const fileName =
+        (text.substring(0, 20).replace(/[^a-z0-9]/gi, "_") || "speech") +
+        ".mp3";
 
-      // Create a safe file name from text input
-      const fileName = (text.substring(0, 20).replace(/[^a-z0-9]/gi, "_") || "speech") + ".mp3";
-      
       link.href = url;
       link.download = fileName;
       document.body.appendChild(link);
