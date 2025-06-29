@@ -7,6 +7,7 @@ export default function TextToAudio() {
   const [language, setLanguage] = useState("en");
   const [audioUrl, setAudioUrl] = useState(null);
 
+  // Use Render backend URL when not localhost
   const BASE_URL =
     window.location.hostname === "localhost"
       ? "http://localhost:8000"
@@ -14,45 +15,60 @@ export default function TextToAudio() {
 
   const handleTextUpload = async (e) => {
     const file = e.target.files[0];
+    if (!file) return;
     const formData = new FormData();
     formData.append("file", file);
+
     try {
-      const res = await axios.post(`${BASE_URL}/api/upload`, formData);
+      const res = await axios.post(`${BASE_URL}/api/upload`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       setText(res.data.text);
     } catch (err) {
-      console.error("Upload error:", err);
+      console.error("Upload error:", err.response?.data || err.message);
     }
   };
 
   const handleConvert = async () => {
+    if (!text.trim()) {
+      alert("Please enter some text before converting.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("text", text);
     formData.append("lang", language);
+
     try {
-      const res = await axios.post(`${BASE_URL}/api/tts`, formData);
+      const res = await axios.post(`${BASE_URL}/api/tts`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       setAudioUrl(res.data.audio_url);
     } catch (err) {
-      console.error("Conversion error:", err);
+      console.error("Conversion error:", err.response?.data || err.message);
     }
   };
 
   const handleDownload = async () => {
+    if (!audioUrl) return;
+
     try {
       const response = await axios.get(audioUrl, { responseType: "blob" });
       const blob = new Blob([response.data]);
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
       const fileName =
-        (text.substring(0, 20).replace(/[^a-z0-9]/gi, "_") || "speech") +
-        ".mp3";
+        (text.substring(0, 20).replace(/[^a-z0-9]/gi, "_") || "speech") + ".mp3";
 
       link.href = url;
       link.download = fileName;
       document.body.appendChild(link);
       link.click();
       link.remove();
+
+      window.URL.revokeObjectURL(url);
     } catch (err) {
-      console.error("Download error:", err);
+      console.error("Download error:", err.response?.data || err.message);
     }
   };
 
@@ -71,6 +87,7 @@ export default function TextToAudio() {
       <input
         type="file"
         className="form-control mb-3"
+        accept="audio/wav,audio/*"
         onChange={handleTextUpload}
       />
 
