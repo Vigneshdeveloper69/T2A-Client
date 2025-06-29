@@ -8,10 +8,7 @@ export default function TextToAudio() {
   const [audioUrl, setAudioUrl] = useState(null);
 
   // Use Render backend URL when not localhost
-  const BASE_URL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:8000"
-      : "https://t2a-server.onrender.com";
+  const BASE_URL = "https://t2a-server.onrender.com";
 
   const handleTextUpload = async (e) => {
     const file = e.target.files[0];
