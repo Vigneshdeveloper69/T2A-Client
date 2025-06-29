@@ -12,7 +12,7 @@ export default function TextToAudio() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await axios.post("http://localhost:8000/api/upload", formData);
+      const res = await axios.post("https://t2a-server.onrender.com/api/upload", formData);
       setText(res.data.text);
     } catch (err) {
       console.error("Upload error:", err);
@@ -24,7 +24,7 @@ export default function TextToAudio() {
     formData.append("text", text);
     formData.append("lang", language);
     try {
-      const res = await axios.post("http://localhost:8000/api/tts", formData);
+      const res = await axios.post("https://t2a-server.onrender.com/api/tts", formData);
       setAudioUrl(res.data.audio_url);
     } catch (err) {
       console.error("Conversion error:", err);

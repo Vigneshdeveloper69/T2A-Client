@@ -22,7 +22,7 @@ export default function AudioToText() {
     formData.append("file", audioFile);
 
     try {
-      const res = await axios.post("http://localhost:8000/api/audio-to-text", formData);
+      const res = await axios.post("https://t2a-server.onrender.com/api/audio-to-text", formData);
       setConvertedText(res.data.text);
       setErrorText(""); // Clear error if successful
     } catch (err) {

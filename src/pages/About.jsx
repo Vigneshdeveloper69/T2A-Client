@@ -54,7 +54,7 @@ export default function About() {
           <div className="col-md-6">
             <div className="card border-0 shadow-sm p-3 text-center">
               <img
-  src="/images/developer.jpeg"
+  src={process.env.PUBLIC_URL + "/images/developer.jpeg"}
   alt="Developer"
   className="img-fluid rounded-circle mb-3 mx-auto d-block"
   style={{ maxWidth: "150px" }}
