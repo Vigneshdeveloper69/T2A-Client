@@ -88,9 +88,7 @@ export default function AudioToText() {
         onChange={handleFileUpload}
       />
 
-      <button className={`btn ${isRecording ? "btn-danger" : "btn-warning"} mb-3`} onClick={handleRecord}>
-        {isRecording ? "⏹️ Stop Recording" : "🎙️ Record Audio"}
-      </button>
+      
 
       <button className="btn btn-primary mb-4" onClick={handleConvert} disabled={!audioFile}>
         🔄 Convert
