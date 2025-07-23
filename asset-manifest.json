@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/T2A-Client/static/css/main.c4a40c2b.css",
-    "main.js": "/T2A-Client/static/js/main.f7bc1b22.js",
+    "main.js": "/T2A-Client/static/js/main.e09f063a.js",
     "static/js/453.419a5d54.chunk.js": "/T2A-Client/static/js/453.419a5d54.chunk.js",
     "index.html": "/T2A-Client/index.html",
     "main.c4a40c2b.css.map": "/T2A-Client/static/css/main.c4a40c2b.css.map",
-    "main.f7bc1b22.js.map": "/T2A-Client/static/js/main.f7bc1b22.js.map",
+    "main.e09f063a.js.map": "/T2A-Client/static/js/main.e09f063a.js.map",
     "453.419a5d54.chunk.js.map": "/T2A-Client/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c4a40c2b.css",
-    "static/js/main.f7bc1b22.js"
+    "static/js/main.e09f063a.js"
   ]
 }
